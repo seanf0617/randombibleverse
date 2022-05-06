@@ -16,8 +16,7 @@ def randombiblesection(bible):
 
     return biblebook, chapter, verse
 
-
-if __name__ == '__main__':
+def biblesection():
     bible = "NIV"
     book, chapter, verse = randombiblesection(bible)
     print(book, chapter, verse)
@@ -30,6 +29,10 @@ if __name__ == '__main__':
 
     tree = RB.parse(file)
     root = tree.getroot()
-    print(root)
-    print(root[book].attrib)
+    print(f'{root[book].attrib["bname"]}  {chapter}:{verse}')
     print(root[book][chapter][verse].text)
+
+
+
+if __name__ == '__main__':
+    biblesection()

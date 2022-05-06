@@ -1,7 +1,8 @@
 import random
+import xml.sax
 
 
-def randombiblesection():
+def randombiblesection(bible):
     # init variablees
     biblebook = 0
     chapter = 0
@@ -11,11 +12,10 @@ def randombiblesection():
     biblebook = randomNumber(1, 66)
     print(biblebook)
 
-    chapter = 999
-    verse = 999
+    chapter = 1
+    verse = 1
 
     return biblebook, chapter, verse
-
 
 
 def randomNumber(low, high):
@@ -26,5 +26,12 @@ def randomNumber(low, high):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    book, chapter, verse = randombiblesection()
+    bible = "NIV"
+    book, chapter, verse = randombiblesection(bible)
     print(book, chapter, verse)
+
+    # set bible xml file
+    if bible == "NIV":
+        file="Bible_English_TNIV.xml"        
+    else:
+        print("No Bible")

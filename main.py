@@ -8,7 +8,10 @@ def randombiblesection(bible):
     biblebook = random.randint(1, 66)
     print(biblebook)
 
+    # How do we determine the # of chapters and do a random on this
     chapter = 1
+
+    # How do we determine the # of verses and do a random on this
     verse = 1
 
     return biblebook, chapter, verse

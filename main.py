@@ -53,7 +53,7 @@ def biblesection():
 
     # print(book, chapter, verse)
 
-    print(f'{root[book].attrib["bname"]}  {chapter}:{verse}')
+    print(f'{root[book].attrib["bname"]}  {chapter+1}:{verse+1}')
     print(root[book][chapter][verse].text)
 
 

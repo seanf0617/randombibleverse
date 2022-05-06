@@ -1,15 +1,11 @@
+from logging import root
 import random
-import xml.sax
+import xml.etree.ElementTree as RB
 
 
 def randombiblesection(bible):
-    # init variablees
-    biblebook = 0
-    chapter = 0
-    verse = 0
-    
     # Add if to see if New (40-66) or Old (1-39) Test
-    biblebook = randomNumber(1, 66)
+    biblebook = random.randint(1, 66)
     print(biblebook)
 
     chapter = 1
@@ -18,13 +14,6 @@ def randombiblesection(bible):
     return biblebook, chapter, verse
 
 
-def randomNumber(low, high):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, between {low} and {high}')  # Press Ctrl+F8 to toggle the breakpoint.
-    return random.randint(low, high)
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     bible = "NIV"
     book, chapter, verse = randombiblesection(bible)
@@ -35,3 +24,9 @@ if __name__ == '__main__':
         file="Bible_English_TNIV.xml"        
     else:
         print("No Bible")
+
+    tree = RB.parse(file)
+    root = tree.getroot()
+    print(root)
+    print(root[book].attrib)
+    print(root[book][chapter][verse].text)

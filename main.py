@@ -1,4 +1,3 @@
-from logging import root
 import random
 import xml.etree.ElementTree as RB
 
@@ -9,12 +8,13 @@ def randombiblesection(bible):
     print(biblebook)
 
     # How do we determine the # of chapters and do a random on this
-    chapter = 1
+    chapter = random.randint(1, 30)
 
     # How do we determine the # of verses and do a random on this
-    verse = 1
+    verse = random.randint(1, 30)
 
     return biblebook, chapter, verse
+
 
 def biblesection():
     bible = "NIV"
@@ -31,7 +31,6 @@ def biblesection():
     root = tree.getroot()
     print(f'{root[book].attrib["bname"]}  {chapter}:{verse}')
     print(root[book][chapter][verse].text)
-
 
 
 if __name__ == '__main__':

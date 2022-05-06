@@ -2,9 +2,14 @@ import random
 
 
 def randombiblesection():
-    # Add if to see if New or Old Test
+    # init variablees
+    biblebook = 0
+    chapter = 0
+    verse = 0
+    
+    # Add if to see if New (40-66) or Old (1-39) Test
     biblebook = randomNumber(1, 66)
-    print(book)
+    print(biblebook)
 
     chapter = 999
     verse = 999
@@ -22,6 +27,4 @@ def randomNumber(low, high):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     book, chapter, verse = randombiblesection()
-    # https://bible-api.com/jn 3:16
-    # https://www.ph4.org/b4_mobi.php?q=zefania
     print(book, chapter, verse)

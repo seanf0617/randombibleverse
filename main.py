@@ -34,25 +34,24 @@ def biblesection():
     tree = RB.parse(file)
     root = tree.getroot()
 
-    book = randombiblebook(bible)
+    book = randombiblebook(bible) - 1
 
     ###  determine the number of Chapters in a given Book
     for childbook in root[book]:
         maxchap = childbook.attrib['cnumber']
-    chapter = randombiblechap(int(maxchap))
+    chapter = randombiblechap(int(maxchap)) - 1 
     
     ###  determine the number of Verses in a given Chapter
     #
     # TRYING TO FIND RANDOM BUG !!!!!!
     #
-    print(book,chapter)
+    # print(book,chapter)
     for childchap in root[book][chapter]:
         maxverse = childchap.attrib['vnumber']
-        print(maxverse)
-    verse = randombiblecverse(int(maxverse))
+    #    print(maxverse)
+    verse = randombiblecverse(int(maxverse)) - 1
 
-    print(book, chapter, verse)
-
+    # print(book, chapter, verse)
 
     print(f'{root[book].attrib["bname"]}  {chapter}:{verse}')
     print(root[book][chapter][verse].text)

@@ -4,20 +4,20 @@ import xml.etree.ElementTree as RB
 
 def randombiblebook(test):
     # Add if to see if New (40-66) or Old (1-39) Test
-    biblebook = random.randint(1, 66)
+    biblebook = random.randint(0, 65)
 
     return biblebook
 
 
 def randombiblechap(maxchap):
     # How do we determine the # of chapters and do a random on this
-    chapter = random.randint(1, maxchap)
+    chapter = random.randint(0, maxchap-1)
 
     return chapter
 
 def randombiblecverse(maxverse):
     # How do we determine the # of verses and do a random on this
-    verse = random.randint(1, maxverse)
+    verse = random.randint(0, maxverse-1)
 
     return verse
 
@@ -34,24 +34,16 @@ def biblesection():
     tree = RB.parse(file)
     root = tree.getroot()
 
-    book = randombiblebook(bible) - 1
+    book = randombiblebook(bible)
 
     ###  determine the number of Chapters in a given Book
     for childbook in root[book]:
         maxchap = childbook.attrib['cnumber']
-    chapter = randombiblechap(int(maxchap)) - 1 
+    chapter = randombiblechap(int(maxchap))
     
-    ###  determine the number of Verses in a given Chapter
-    #
-    # TRYING TO FIND RANDOM BUG !!!!!!
-    #
-    # print(book,chapter)
     for childchap in root[book][chapter]:
         maxverse = childchap.attrib['vnumber']
-    #    print(maxverse)
-    verse = randombiblecverse(int(maxverse)) - 1
-
-    # print(book, chapter, verse)
+    verse = randombiblecverse(int(maxverse))
 
     print(f'{root[book].attrib["bname"]}  {chapter+1}:{verse+1}')
     print(root[book][chapter][verse].text)
